@@ -1474,6 +1474,7 @@ func (c *HostClient) acquireConn(reqTimeout time.Duration, connectionClose bool)
 			return nil, ErrNoFreeConns
 		}
 
+		//nolint:dupword
 		// reqTimeout    c.MaxConnWaitTimeout   wait duration
 		//     d1                 d2            min(d1, d2)
 		//  0(not set)            d2            d2
@@ -2542,8 +2543,8 @@ func (c *PipelineClient) newConnClient() *pipelineConnClient {
 }
 
 // ErrPipelineOverflow may be returned from PipelineClient.Do*
-// if the requests' queue is overflown.
-var ErrPipelineOverflow = errors.New("pipelined requests' queue has been overflown. Increase MaxConns and/or MaxPendingRequests")
+// if the requests' queue is overflowed.
+var ErrPipelineOverflow = errors.New("pipelined requests' queue has been overflowed. Increase MaxConns and/or MaxPendingRequests")
 
 // DefaultMaxPendingRequests is the default value
 // for PipelineClient.MaxPendingRequests.
